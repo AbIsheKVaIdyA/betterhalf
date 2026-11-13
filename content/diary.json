@@ -1,0 +1,41 @@
+{
+  "site": {
+    "herName": "Kusa",
+    "yourName": "Abhishek",
+    "coupleName": "Abhishek & Kusa",
+    "startDate": "2024-02-14",
+    "welcomeTagline": "Open whenever. Write when you feel like it.",
+    "heroHeadline": "Together",
+    "heroSubline": "A shared book of moments — not a daily habit. Add a page when time finds you.",
+    "gate": {
+      "enabled": true,
+      "password": "forever",
+      "question": "",
+      "answer": "",
+      "hint": "Our little word."
+    },
+    "footerLine": "Pages, when they come"
+  },
+  "chapters": [
+    {
+      "id": "how-we-met",
+      "title": "Beginning",
+      "subtitle": "The first days"
+    },
+    {
+      "id": "first-adventures",
+      "title": "Adventures",
+      "subtitle": "When the world opened"
+    },
+    {
+      "id": "favorite-places",
+      "title": "Places",
+      "subtitle": "Where we returned"
+    },
+    {
+      "id": "today-and-forever",
+      "title": "Continuing",
+      "subtitle": "Still being written"
+    }
+  ]
+}

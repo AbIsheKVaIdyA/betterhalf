@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abhishek & Kusa
 
-## Getting Started
+Private shared diary — write whenever a moment feels worth keeping.
 
-First, run the development server:
+## Stack
+
+- Next.js 15
+- Neon Postgres
+- Vercel Blob (private photo storage)
+- Tailwind CSS v4 · Framer Motion
+
+## Setup
 
 ```bash
+cp .env.example .env.local
+# add DATABASE_URL + BLOB_READ_WRITE_TOKEN
+
+npm install
+npm run db:setup
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Local development |
+| `npm run build` | Production build |
+| `npm run db:push` | Sync schema to Neon |
+| `npm run db:seed` | Seed site + chapters from `content/diary.json` |
+| `npm run db:clear` | Delete all diary entries |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Env
 
-## Learn More
+```bash
+DATABASE_URL=           # Neon pooled connection string
+BLOB_READ_WRITE_TOKEN=  # Vercel Blob token
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Gate password lives in `content/diary.json` → `site.gate.password` (synced on seed)
+- Photos upload to Vercel Blob and are served via `/api/media/...`
+- Entries live in Neon — nothing important is stored only on disk
